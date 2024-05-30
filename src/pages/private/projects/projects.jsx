@@ -2,31 +2,33 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { ColumnType } from "../../../constants/constants";
 import Column from "../../../components/UI/column/column";
-import { IconButton, useColorModeValue } from "@chakra-ui/react";
-import useColumnTasks from "../../../hooks/useColumnTask";
-import { AddIcon } from "@chakra-ui/icons";
+import { useState } from "react";
+import TaskPage from "../task/task";
 
 const ProjectsPage = () => {
 
-    const { addEmptyTask } = useColumnTasks(ColumnType.TO_DO);
+  const [openModal, setOpenModal] = useState(false);
+  const userState = JSON.parse(localStorage.getItem('usuario'))
+  console.log(userState)
+
+  const closeModal = () => {
+    setOpenModal(!true);
+  }
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  }
 
   return (
     <section className="bg-white h-full rounded-md p-3">
       <div className="flex justify-between mb-2 text-2xl">
         <h2>Tablero Kanban</h2>
-        <IconButton
-          size="xs"
-          w="full"
-          color={useColorModeValue("gray.500", "gray.400")}
-          bgColor={useColorModeValue("gray.100", "gray.700")}
-          _hover={{ bgColor: useColorModeValue("gray.200", "gray.600") }}
-          py={2}
-          variant="solid"
-          onClick={addEmptyTask}
-          colorScheme="black"
-          aria-label="add-task"
-          icon={<AddIcon />}
-        />
+        <button
+          onClick={handleOpenModal}
+          className="border-gray-400 border-2 p-2 text-lg rounded-md hover:bg-slate-200"
+        >
+          crear tarea
+        </button>
       </div>
       <DndProvider backend={HTML5Backend}>
         <div className="flex justify-between gap-3 h-[90%]">
@@ -35,6 +37,21 @@ const ProjectsPage = () => {
           <Column column={ColumnType.COMPLETED} columnName="Completado" />
         </div>
       </DndProvider>
+
+      <div
+        className="bg-gray-400 absolute top-0 left-0 w-full h-full bg-opacity-35 flex justify-center items-center"
+        style={{ display: openModal ? "flex" : "none" }}
+      >
+        <div className="bg-white p-5 rounded-lg w-max h-max relative">
+          <button
+            onClick={closeModal}
+            className="border-gray-400 border-2 p-1 text-lg rounded-md hover:bg-slate-200 absolute top-3 right-3"
+          >
+            X
+          </button>
+          <TaskPage />
+        </div>
+      </div>
     </section>
   );
 };

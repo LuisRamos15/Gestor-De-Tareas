@@ -14,11 +14,6 @@ const Sidebar = () => {
             </Link>
           </li>
           <li>
-            <Link to='/projects' className='flex gap-2 align-middle p-3 w-full hover:border-r-4 hover:border-indigo-400 hover:text-indigo-500 hover:bg-indigo-300 hover:bg-opacity-20'>
-              <p>Projects</p>
-            </Link>
-          </li>
-          <li>
             <Link to='/task' className='flex gap-2 align-middle p-3 w-full hover:border-r-4 hover:border-indigo-400 hover:text-indigo-500 hover:bg-indigo-300 hover:bg-opacity-20'>
               <p>Task</p>
             </Link>

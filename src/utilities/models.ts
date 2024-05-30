@@ -2,9 +2,13 @@ import { ColumnType } from '../constants/constants';
 
 export interface TaskModel {
   id: string;
-  title: string;
+  titulo: string;
+  descripcion: string;
+  categoria: string;
+  prioridad: string;
+  fechaVencimiento: string;
+  estado: string;
   column: ColumnType;
-  color: string;
 }
 
 export interface DragItem {

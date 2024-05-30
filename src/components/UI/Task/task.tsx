@@ -27,10 +27,10 @@ function Task({
     handleDropHover
   );
 
-  const handleTitleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newTitle = e.target.value;
-    handleUpdate(task.id, { ...task, title: newTitle });
-  };
+  // const handleTitleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+  //   const newTitle = e.target.value;
+  //   handleUpdate(task.id, { ...task, newTitle });
+  // };
 
   const handleDeleteClick = () => {
     handleDelete(task.id);
@@ -69,21 +69,13 @@ function Task({
           }}
           onClick={handleDeleteClick}
         />
-        {/* <AutoResizeTextarea
-          value={task.title}
-          fontWeight="semibold"
-          cursor="inherit"
-          border="none"
-          padding={'10px'}
-          resize="none"
-          maxH={'100%'}
-          width={'100%'}
-          focusBorderColor="none"
-          color="gray.700"
-          onChange={handleTitleChange}
-        /> */}
         <div className='bg-white h-14 rounded-lg shadow-lg p-2' >
-          {task.title}
+          {task.titulo}
+          {/* {task.descripcion}
+          {task.categoria}
+          {task.fechaVencimiento}
+          {task.prioridad}
+          {task.estado} */}
         </div>
       </Box>
     </ScaleFade>
