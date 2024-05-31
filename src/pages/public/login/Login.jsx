@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import AuthServices from '../../../services/AuthServices'
 import { persistLocalStorage } from "../../../utilities/localStorage";
-import { useEffect } from "react";
+// import { useEffect } from "react";
 
 const Login = () => {
 
@@ -22,12 +22,13 @@ const Login = () => {
       }
       console.log(usuario)
       persistLocalStorage('usuario', usuario)
+      navigate('/')
     })
   }
 
-  useEffect(() => {
-    userState ? navigate(`/`, { replace: true } ) : navigate(`/login`);
-  }, [navigate, userState])
+  // useEffect(() => {
+  //   userState ? navigate(`/`, { replace: true } ) : navigate(`/login`);
+  // }, [navigate, userState])
 
   return (
     <div className="">
