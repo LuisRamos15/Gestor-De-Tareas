@@ -8,6 +8,7 @@ import TaskPage from "../task/task";
 const ProjectsPage = () => {
 
   const [openModal, setOpenModal] = useState(false);
+  const userState = JSON.parse(localStorage.getItem('usuario'))
 
   const closeModal = () => {
     setOpenModal(!true);
@@ -30,9 +31,9 @@ const ProjectsPage = () => {
       </div>
       <DndProvider backend={HTML5Backend}>
         <div className="flex justify-between gap-3 h-[90%]">
-          <Column column={ColumnType.TO_DO} columnName="Tareas" />
-          <Column column={ColumnType.IN_PROGRESS} columnName="En proceso" />
-          <Column column={ColumnType.COMPLETED} columnName="Completado" />
+          <Column column={ColumnType.TO_DO} userId={userState.usuarioID} columnName="Tareas" />
+          <Column column={ColumnType.IN_PROGRESS} userId={userState.usuarioID} columnName="En proceso" />
+          <Column column={ColumnType.COMPLETED} userId={userState.usuarioID} columnName="Completado" />
         </div>
       </DndProvider>
 

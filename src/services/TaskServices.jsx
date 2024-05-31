@@ -2,7 +2,7 @@ import ApiInstance from "../api/config"
 
 class TaskServices {
   
-  create = async (data, id) => {
+  create = async (id, data) => {
     try {
       const response = await ApiInstance.post(`/tareas/usuario/${id}`, data)
       return response

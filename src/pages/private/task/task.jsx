@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useColumnTasks from "../../../hooks/useColumnTask";
 import { ColumnType } from "../../../constants/constants";
+import TaskServices from "../../../services/TaskServices";
 
 const TaskPage = () => {
 
@@ -27,7 +28,21 @@ const TaskPage = () => {
     task.userId = userState.usuarioID
 
     addEmptyTask(task)
+    const taskService = new TaskServices()
+    const response = taskService.create(userState.usuarioID, task)
+    response.then(data => console.log(data))
+
     console.log(task)
+
+    setTask({
+      userId: 0,
+      titulo: "",
+      descripcion: "",
+      fechaVencimiento: "",
+      prioridad: "",
+      status: "",
+      categoria: "",
+    });
   }
 
   return (
