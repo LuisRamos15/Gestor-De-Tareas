@@ -1,16 +1,20 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthServices from "../../../services/AuthServices";
 
 const Register = () => {
 
   const { register, handleSubmit } = useForm()
+  const navigate = useNavigate()
 
   const onSubmit = (data) => {
     console.log(data)
     const authServices = new AuthServices()
     const response = authServices.register(data)
-    response.then((data) => console.log(data))
+    response.then((data) => {
+      console.log(data)
+      if (data) return navigate('/login')
+    })
   }
 
   return (
