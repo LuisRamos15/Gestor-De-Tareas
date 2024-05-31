@@ -8,6 +8,7 @@ export interface TaskModel {
   prioridad: string;
   fechaVencimiento: string;
   estado: string;
+  userId: number;
   column: ColumnType;
 }
 

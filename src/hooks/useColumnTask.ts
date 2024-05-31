@@ -8,7 +8,7 @@ import useTaskCollection from './useTaskCollection';
 
 const MAX_TASK_PER_COLUMN = 100;
 
-function useColumnTasks(column: ColumnType) {
+function useColumnTasks(column: ColumnType, userId: number) {
   const [tasks, setTasks] = useTaskCollection();
 
   const columnTasks = tasks[column];
@@ -31,6 +31,7 @@ function useColumnTasks(column: ColumnType) {
         estado: task.estado,
         fechaVencimiento: task.fechaVencimiento,
         prioridad: task.prioridad,
+        userId: task.userId,
         column,
       };
 

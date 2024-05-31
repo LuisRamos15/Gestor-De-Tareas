@@ -7,14 +7,14 @@ import useColumnTasks from '../../../hooks/useColumnTask';
 import { ColumnType } from '../../../constants/constants';
 import Task from '../Task/task';
 
-function Column({ column, columnName }: { column: ColumnType, columnName: string }) {
+function Column({ column, columnName, userId }: { column: ColumnType, columnName: string, userId: number }) {
   const {
     tasks,
     deleteTask,
     dropTaskFrom,
     swapTasks,
     updateTask,
-  } = useColumnTasks(column);
+  } = useColumnTasks(column, userId);
 
   const { dropRef, isOver } = useColumnDrop(column, dropTaskFrom);
 

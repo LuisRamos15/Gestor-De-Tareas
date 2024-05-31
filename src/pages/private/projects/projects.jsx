@@ -8,8 +8,6 @@ import TaskPage from "../task/task";
 const ProjectsPage = () => {
 
   const [openModal, setOpenModal] = useState(false);
-  const userState = JSON.parse(localStorage.getItem('usuario'))
-  console.log(userState)
 
   const closeModal = () => {
     setOpenModal(!true);

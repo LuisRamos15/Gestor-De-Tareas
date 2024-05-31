@@ -5,8 +5,10 @@ import { ColumnType } from "../../../constants/constants";
 const TaskPage = () => {
 
   const { addEmptyTask } = useColumnTasks(ColumnType.TO_DO);
+  const userState = JSON.parse(localStorage.getItem('usuario'))
 
   const [task, setTask] = useState({
+    userId: 0,
     titulo: '',
     descripcion: '',
     fechaVencimiento: '',
@@ -21,6 +23,9 @@ const TaskPage = () => {
 
   const hanleSubmit = (e) => {
     e.preventDefault();
+
+    task.userId = userState.usuarioID
+
     addEmptyTask(task)
     console.log(task)
   }
@@ -137,13 +142,13 @@ const TaskPage = () => {
 
           <div>
             <label
-              htmlFor="categoria"
+              htmlFor="status"
               className="block text-sm font-medium leading-6 text-gray-900"
             >
               stados
             </label>
             <div className="mt-2">
-              <select name="estados" id="estados">
+              <select name="status" id="status" value={task.status} onChange={handleChange}>
                 <option value="COMPLETADO">completado</option>
                 <option value="PENDIENTE">pendiente</option>
                 <option value="EN_PROCESO">en proceso</option>
