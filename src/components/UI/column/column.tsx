@@ -1,7 +1,5 @@
 import React from 'react';
-import {
-  Heading,
-} from '@chakra-ui/react';
+import { Heading } from '@chakra-ui/react';
 import useColumnDrop from '../../../hooks/useColumnDrop';
 import useColumnTasks from '../../../hooks/useColumnTask';
 import { ColumnType } from '../../../constants/constants';
@@ -18,16 +16,20 @@ function Column({ column, columnName, userId }: { column: ColumnType, columnName
 
   const { dropRef, isOver } = useColumnDrop(column, dropTaskFrom);
 
-  const ColumnTasks = tasks.map((task, index) => (
-    <Task
-      key={task.id}
-      task={task}
-      index={index}
-      onDropHover={swapTasks}
-      onUpdate={updateTask}
-      onDelete={deleteTask}
-    />
-  ));
+  const ColumnTasks = tasks.length > 0 ? (
+    tasks.map((task, index) => (
+      <Task
+        key={task.id}
+        task={task}
+        index={index}
+        onDropHover={swapTasks}
+        onUpdate={updateTask}
+        onDelete={deleteTask}
+      />
+    ))
+  ) : (
+    <div>No hay tareas en esta columna</div>
+  );
 
   return (
     <div className='bg-gray-200 bg-opacity-45 w-full p-3 rounded-md'>
